@@ -26,21 +26,25 @@
             </button>
             <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="{{ route('home') }}" class="nav-item nav-link active">Home</a>
+                    <a href="{{ route('home') }}" class="nav-item nav-link active">Trang chủ</a>
                     <a href="{{ route('website.product.index') }}" class="nav-item nav-link">Shop</a>
-                    <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                            <a href="cart.html" class="dropdown-item">Cart</a>
-                            <a href="chackout.html" class="dropdown-item">Chackout</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="404.html" class="dropdown-item">404 Page</a>
-                        </div>
-                    </div>
-                    <a href="{{ route('website.contact.index') }}" class="nav-item nav-link">Contact</a>
+                    <a href="shop-detail.html" class="nav-item nav-link">Bài viết</a>
+
+                    <a href="{{ route('website.contact.index') }}" class="nav-item nav-link">Liên hệ</a>
+
+                </div>
+                <div class="d-flex m-3 me-0">
+                    <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+                        data-bs-toggle="modal" data-bs-target="#searchModal"><i
+                            class="fas fa-search text-primary"></i></button>
+                    <a href="#" class="position-relative me-4 my-auto">
+                        <i class="fa fa-shopping-bag fa-2x"></i>
+                        <span
+                            class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                            style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                    </a>
                     @auth
-                        <div class="dropdown ml-4 mt-2 ">
+                        <div class="dropdown ms-2 ml-4">
                             <button class="btn btn-primary " type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->name }}
@@ -60,24 +64,11 @@
                             </ul>
                         </div>
                     @else
-                        <li class="nav-item" style="margin-left:30px">
-                            <a class="nav-link " href="{{ route('login') }}">Đăng nhập</i></a>
-                        </li>
+                        <a href="{{ route('login') }}" class="my-auto">
+                            <i class="fas fa-user fa-2x"></i>
+                        </a>
                     @endauth
-                </div>
-                <div class="d-flex m-3 me-0">
-                    <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-                        data-bs-toggle="modal" data-bs-target="#searchModal"><i
-                            class="fas fa-search text-primary"></i></button>
-                    <a href="#" class="position-relative me-4 my-auto">
-                        <i class="fa fa-shopping-bag fa-2x"></i>
-                        <span
-                            class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-                            style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-                    </a>
-                    <a href="#" class="my-auto">
-                        <i class="fas fa-user fa-2x"></i>
-                    </a>
+
                 </div>
             </div>
         </nav>
