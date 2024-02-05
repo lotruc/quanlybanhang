@@ -60,25 +60,6 @@
                         <span class="hide-menu">Quản lý bài viết</span>
                     </a>
                 </li>
-
-
-                <li class="nav-small-cap">
-                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">AUTH</span>
-                </li>
-                <li class="sidebar-item">
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-
-                        <a href="#" class="btn btn-outline-primary mx-3 mt-2 d-block"
-                            onclick="event.preventDefault();
-                              this.closest('form').submit();">
-                            {{ __('Đăng xuất') }}
-                        </a>
-                    </form>
-                </li>
-
-
             </ul>
 
         </nav>
