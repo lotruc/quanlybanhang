@@ -18,8 +18,9 @@
                     <div class="d-flex justify-content-between flex-lg-wrap">
                         <p class="text-dark fs-5 fw-bold mb-0">{{ number_format($item->price, 0, ',', '.') }} VND
                         </p>
-                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                        <button data-product-id="{{ $item->id }}"
+                            class="btn btn-add-cart border border-secondary rounded-pill px-3 text-primary"><i
+                                class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</button>
                     </div>
                 </div>
             </div>

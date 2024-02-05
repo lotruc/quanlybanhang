@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\CKEditorController;
+use App\Http\Controllers\Website\CartController;
+use App\Http\Controllers\Website\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Website\HomeController;
 use App\Http\Controllers\Website\ShopController;
@@ -78,6 +80,17 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
 // route cho nguoi dung dang nhap
 Route::middleware('auth')->group(function () {
+    Route::prefix('cart')->group(function () {
+        Route::get('/', [CartController::class, 'index'])->name('cart.index');
+        Route::post('/', [CartController::class, 'search'])->name('cart.search');
+        Route::post('/getTotalProductInCart', [CartController::class, 'getTotalProductInCart'])->name('cart.getTotalProductInCart');
+        Route::post('/add_to_cart', [CartController::class, 'addToCart'])->name('cart.add');
+        Route::post('/update_cart', [CartController::class, 'updateCart'])->name('cart.update');
+        Route::delete('/remove', [CartController::class, 'removeProductFromCart'])->name('cart.remove');
+    });
+
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+
 });
 
 require __DIR__ . '/auth.php';
