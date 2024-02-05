@@ -9,10 +9,15 @@ use Illuminate\Support\Facades\Log;
 
 class CategoryService
 {
-    public function getCategories()
+    public function getCategories($limit = null)
     {
         try {
-            $categories = Category::where('status', 1)->latest()->get();
+            $categories = Category::where('status', 1)->orderBy('id', 'asc');;
+            if($limit != null && $limit != ''){
+                $categories =  $categories->take($limit)->get();
+            }else{
+                $categories =  $categories->get();
+            }
             return $categories;
         } catch (Exception $e) {
             Log::error($e);
