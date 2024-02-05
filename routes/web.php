@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\CKEditorController;
@@ -72,6 +73,18 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
         Route::get('/', [AdminContactController::class, 'index'])->name('admin.contact.index');
         Route::post('/search', [AdminContactController::class, 'search'])->name('admin.contact.search');
         Route::delete('/delete/{id}', [AdminContactController::class, 'delete'])->name('admin.contact.delete');
+    });
+
+    Route::prefix('orders')->group(function () {
+        Route::get('/', [AdminOrderController::class, 'index'])->name('admin.order.index');
+        Route::post('/search', [AdminOrderController::class, 'search'])->name('admin.order.search');
+        Route::post('/updateStatus', [AdminOrderController::class, 'updateStatus'])->name('admin.order.updateStatus');
+        Route::delete('/delete/{id}', [AdminOrderController::class, 'delete'])->name('admin.order.delete');
+    });
+
+    Route::prefix('orders/details')->group(function () {
+        Route::get('/{id}', [AdminOrderController::class, 'details'])->name('admin.order.details');
+        Route::post('/search', [AdminOrderController::class, 'searchDetails'])->name('admin.order.searchDetails');
     });
 });
 
