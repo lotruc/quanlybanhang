@@ -37,11 +37,11 @@
                     <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
                         data-bs-toggle="modal" data-bs-target="#searchModal"><i
                             class="fas fa-search text-primary"></i></button>
-                    <a href="#" class="position-relative me-4 my-auto">
+                    <a href="{{ route('cart.index') }}" class="position-relative me-4 my-auto">
                         <i class="fa fa-shopping-bag fa-2x"></i>
-                        <span
+                        <span id="countProduct"
                             class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-                            style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                            style="top: -5px; left: 15px; height: 20px; min-width: 20px;">0</span>
                     </a>
                     @auth
                         <div class="dropdown ms-2 ml-4">
@@ -75,3 +75,25 @@
     </div>
 </div>
 <!-- Navbar End -->
+<script>
+    function getTotalProductInCart() {
+        $.ajax({
+            url: "{{ route('cart.getTotalProductInCart') }}",
+            type: "POST",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+        }).done(function(res) {
+            $('#countProduct').text(res.data);
+        }).fail(function(xhr) {
+            if (xhr.status === 401) {
+                $('#countProduct').text(0);
+            } else {
+                notiError();
+            }
+        });
+    }
+    $(document).ready(function() {
+        getTotalProductInCart();
+    })
+</script>
