@@ -26,11 +26,14 @@
             </button>
             <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="{{ route('home') }}" class="nav-item nav-link active">Trang chủ</a>
-                    <a href="{{ route('website.product.index') }}" class="nav-item nav-link">Shop</a>
-                    <a href="shop-detail.html" class="nav-item nav-link">Bài viết</a>
+                    <a href="{{ route('home') }}"
+                        class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}">Trang chủ</a>
+                    <a href="{{ route('website.product.index') }}"
+                        class="nav-item nav-link {{ request()->is('product') ? 'active' : '' }}">Shop</a>
 
-                    <a href="{{ route('website.contact.index') }}" class="nav-item nav-link">Liên hệ</a>
+
+                    <a href="{{ route('website.contact.index') }}"
+                        class="nav-item nav-link {{ request()->is('contacts') ? 'active' : '' }}">Liên hệ</a>
 
                 </div>
                 <div class="d-flex m-3 me-0">
