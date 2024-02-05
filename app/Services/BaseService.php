@@ -11,10 +11,7 @@ class BaseService
 {
 
     /**
-     * Upload files to storage
-     *
-     * @param $files
-     * @return path files
+     * hàm lưu file vào storage
      */
     public function uploadFile($files, $newFolder = null)
     {
@@ -35,10 +32,7 @@ class BaseService
 
 
     /**
-     * Delete files to storage
-     *
-     * @param path files
-     * @return true
+     * Hàm xóa file trong storage
      */
     public function deleteFile($path)
     {
@@ -51,5 +45,20 @@ class BaseService
             Log::error($e);
             throw $e;
         }
+    }
+
+    /**
+     * Hàm tạo 1 đoạn chữ số ngẫu nhiên
+     */
+    public function generateRandomCode($length = 10)
+    {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $code = '';
+
+        for ($i = 0; $i < $length; $i++) {
+            $code .= $characters[rand(0, strlen($characters) - 1)];
+        }
+
+        return $code;
     }
 }
