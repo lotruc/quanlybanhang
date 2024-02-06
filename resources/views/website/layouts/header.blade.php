@@ -28,6 +28,8 @@
                 <div class="navbar-nav mx-auto">
                     <a href="{{ route('home') }}"
                         class="nav-item nav-link {{ request()->is('/') ? 'active' : '' }}">Trang chủ</a>
+                    <a href="{{ route('about') }}"
+                        class="nav-item nav-link {{ request()->is('about') ? 'active' : '' }}">Về chúng tôi</a>
                     <a href="{{ route('website.product.index') }}"
                         class="nav-item nav-link {{ request()->is('product') ? 'active' : '' }}">Shop</a>
 

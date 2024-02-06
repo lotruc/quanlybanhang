@@ -29,6 +29,7 @@ use App\Http\Controllers\Website\ContactController;
 
 //route danh cho nguoi dung
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::post('/searchProductHome', [HomeController::class, 'searchProductByCategory'])->name('website.home.searchProductByCategory');
 
 Route::prefix('contacts')->group(function () {
